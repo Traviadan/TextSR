@@ -25,13 +25,10 @@ public:
 	FText Description;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float PriceModifier;
+	float Price;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float HealthModifier;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float LevelModifier;
+	int32 Availability;
 };
 
 USTRUCT(BlueprintType)
@@ -48,4 +45,23 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	EDamageType DamageType;
+};
+
+USTRUCT(BlueprintType)
+struct FItem
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UDataTable* ItemTable;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName RowName;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<UDataTable*> ModifierTable;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<FName> ModifierRowName;
 };
