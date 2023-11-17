@@ -1,29 +1,33 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
 #pragma once
 
+#include "CoreMinimal.h"
 #include "Engine/DataTable.h"
-#include "DataTypes.generated.h"
+#include "UObject/NoExportTypes.h"
+#include "TextSRTypes.generated.h"
 
 UENUM(BlueprintType)
-enum class EDamageType : uint8
+enum class ESRDamageType : uint8
 {
-	EDT_Physical UMETA(DisplayName = "Physical Damage"),
-	EDT_Stun UMETA(DisplayName = "Stun Damage"),
+	ESRDT_Physical UMETA(DisplayName = "Physical Damage"),
+	ESRDT_Stun UMETA(DisplayName = "Stun Damage"),
 
-	EDT_MAX UMETA(DisplayName = "DefaultMAX")
+	ESRDT_MAX UMETA(DisplayName = "DefaultMAX")
 };
 
 UENUM(BlueprintType)
-enum class EWeaponType : uint8
+enum class ESRWeaponType : uint8
 {
-	EWT_CloseCombatBlade UMETA(DisplayName = "Klingenwaffen"),
-	EWT_CloseCombatBlunt UMETA(DisplayName = "Knüppel"),
-	EWT_CloseCombatOther UMETA(DisplayName = "Andere Nahkampfwaffen"),
+	ESRWT_CloseCombatBlade UMETA(DisplayName = "Klingenwaffen"),
+	ESRWT_CloseCombatBlunt UMETA(DisplayName = "Knüppel"),
+	ESRWT_CloseCombatOther UMETA(DisplayName = "Andere Nahkampfwaffen"),
 
-	EWT_MAX UMETA(DisplayName = "DefaultMAX")
+	ESRWT_MAX UMETA(DisplayName = "DefaultMAX")
 };
 
 USTRUCT(BlueprintType)
-struct FItemTable : public FTableRowBase
+struct FSRItemTable : public FTableRowBase
 {
 	GENERATED_BODY()
 
@@ -42,7 +46,7 @@ public:
 };
 
 USTRUCT(BlueprintType)
-struct FWeaponTable : public FItemTable
+struct FSRWeaponTable : public FSRItemTable
 {
 	GENERATED_BODY()
 
@@ -54,17 +58,17 @@ public:
 	int32 Damage;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	EDamageType DamageType;
+	ESRDamageType DamageType;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Penetration;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	EWeaponType WeaponType;
+	ESRWeaponType WeaponType;
 };
 
 USTRUCT(BlueprintType)
-struct FCloseCombatWeaponTable : public FWeaponTable
+struct FSRCloseCombatWeaponTable : public FSRWeaponTable
 {
 	GENERATED_BODY()
 
@@ -74,7 +78,7 @@ public:
 };
 
 USTRUCT(BlueprintType)
-struct FRangedCombatWeaponTable : public FWeaponTable
+struct FSRRangedCombatWeaponTable : public FSRWeaponTable
 {
 	GENERATED_BODY()
 
@@ -93,7 +97,7 @@ public:
 };
 
 USTRUCT(BlueprintType)
-struct FItem
+struct FSRItem
 {
 	GENERATED_BODY()
 
@@ -109,4 +113,14 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TArray<FName> ModifierRowName;
+};
+
+/**
+ * 
+ */
+UCLASS()
+class TEXTSR_API UTextSRTypes : public UObject
+{
+	GENERATED_BODY()
+	
 };
