@@ -12,6 +12,16 @@ enum class EDamageType : uint8
 	EDT_MAX UMETA(DisplayName = "DefaultMAX")
 };
 
+UENUM(BlueprintType)
+enum class EWeaponType : uint8
+{
+	EWT_CloseCombatBlade UMETA(DisplayName = "Klingenwaffen"),
+	EWT_CloseCombatBlunt UMETA(DisplayName = "Knüppel"),
+	EWT_CloseCombatOther UMETA(DisplayName = "Andere Nahkampfwaffen"),
+
+	EWT_MAX UMETA(DisplayName = "DefaultMAX")
+};
+
 USTRUCT(BlueprintType)
 struct FItemTable : public FTableRowBase
 {
@@ -38,13 +48,48 @@ struct FWeaponTable : public FItemTable
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float Precision;
+	int32 Precision;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float Damage;
+	int32 Damage;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	EDamageType DamageType;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 Penetration;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	EWeaponType WeaponType;
+};
+
+USTRUCT(BlueprintType)
+struct FCloseCombatWeaponTable : public FWeaponTable
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 Reach;
+};
+
+USTRUCT(BlueprintType)
+struct FRangedCombatWeaponTable : public FWeaponTable
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString FireModes;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 RecoilCompensation;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 Ammunition;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString LoadingMechanism;
 };
 
 USTRUCT(BlueprintType)
