@@ -39,10 +39,19 @@ public:
 	FText Description;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float Price;
+	int32 Price;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Availability;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 Level;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 Capacity;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString Mods;
 };
 
 USTRUCT(BlueprintType)
@@ -113,6 +122,12 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TArray<FName> ModifierRowName;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 PriceMod;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 AvailabilityMod;
 };
 
 /**
