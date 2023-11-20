@@ -54,7 +54,7 @@ struct FSRItemTable : public FTableRowBase
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FName Name;
+	FText Name;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FText Description;
@@ -76,6 +76,31 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString Mods;
+};
+
+USTRUCT(BlueprintType)
+struct FSRElectronicsTable : public FSRItemTable
+{
+	GENERATED_BODY()
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString AttributeArrangement;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 MaxPrograms;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 Processing;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 Firewall;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 Attack;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 Stealth;
 };
 
 USTRUCT(BlueprintType)
