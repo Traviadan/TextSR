@@ -26,6 +26,27 @@ enum class ESRWeaponType : uint8
 	ESRWT_MAX UMETA(DisplayName = "DefaultMAX")
 };
 
+UENUM(BlueprintType)
+enum class ESRItemCondition : uint8
+{
+	ESRIC_New UMETA(DisplayName = "Neu"),
+	ESRIC_Used UMETA(DisplayName = "Gebraucht"),
+	ESRIC_Defective UMETA(DisplayName = "Defekt"),
+	ESRIC_Destroyed UMETA(DisplayName = "Zerstört"),
+
+	ESRIC_MAX UMETA(DisplayName = "DefaultMAX")
+};
+
+UENUM(BlueprintType)
+enum class ESRLegality : uint8
+{
+	ESRL_Legal UMETA(DisplayName = "Legal"),
+	ESRL_Restricted UMETA(DisplayName = "Eingeschränkt"),
+	ESRL_Forbidden UMETA(DisplayName = "Verboten"),
+
+	ESRIC_MAX UMETA(DisplayName = "DefaultMAX")
+};
+
 USTRUCT(BlueprintType)
 struct FSRItemTable : public FTableRowBase
 {
@@ -49,6 +70,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Capacity;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ESRLegality Legality;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString Mods;
@@ -118,16 +142,13 @@ public:
 	FName RowName;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TArray<UDataTable*> ModifierTable;
+	TArray<UDataTable*> ModifierTables;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TArray<FName> ModifierRowName;
+	TArray<FName> ModifierRowNames;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 PriceMod;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 AvailabilityMod;
+	ESRItemCondition ItemCondition;
 };
 
 /**
