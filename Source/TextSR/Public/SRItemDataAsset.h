@@ -23,6 +23,9 @@ public:
 	FText Description;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	AActor* SpawnActor;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Price;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
