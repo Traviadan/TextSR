@@ -23,7 +23,13 @@ public:
 	FText Description;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	AActor* SpawnActor;
+	TSubclassOf<AActor> SpawnActor;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<UStaticMesh> StaticMesh;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<UTexture2D> Icon;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Price;
