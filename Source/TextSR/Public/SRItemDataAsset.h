@@ -26,10 +26,10 @@ public:
 	TSubclassOf<AActor> SpawnActor;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<UStaticMesh> StaticMesh;
+	UStaticMesh* StaticMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<UTexture2D> Icon;
+	UTexture2D* Icon;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Price;
