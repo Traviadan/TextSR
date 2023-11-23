@@ -38,6 +38,16 @@ enum class ESRItemCondition : uint8
 };
 
 UENUM(BlueprintType)
+enum class ESRItemVisibility : uint8
+{
+	ESRIV_Normal UMETA(DisplayName = "Normal"),
+	ESRIV_Hidden UMETA(DisplayName = "Versteckt"),
+	ESRIV_Invisible UMETA(DisplayName = "Unsichtbar"),
+
+	ESRIC_MAX UMETA(DisplayName = "DefaultMAX")
+};
+
+UENUM(BlueprintType)
 enum class ESRLegality : uint8
 {
 	ESRL_Legal UMETA(DisplayName = "Legal"),
@@ -161,19 +171,16 @@ struct FSRItem
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UDataTable* ItemTable;
+	UPrimaryDataAsset* ItemAsset;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FName RowName;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TArray<UDataTable*> ModifierTables;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TArray<FName> ModifierRowNames;
+	TArray<UPrimaryDataAsset*> ModifierAssets;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	ESRItemCondition ItemCondition;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ESRItemVisibility ItemVisibility;
 };
 
 /**
