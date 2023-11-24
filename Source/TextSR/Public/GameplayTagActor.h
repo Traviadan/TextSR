@@ -6,16 +6,16 @@
 #include "GameFramework/Actor.h"
 #include "GameplayTagContainer.h"
 #include "GameplayTagAssetInterface.h"
-#include "SRItemActor.generated.h"
+#include "GameplayTagActor.generated.h"
 
 UCLASS()
-class TEXTSR_API ASRItemActor : public AActor, public IGameplayTagAssetInterface
+class TEXTSR_API AGameplayTagActor : public AActor, public IGameplayTagAssetInterface
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	ASRItemActor();
+	AGameplayTagActor();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay Tags")
 	FGameplayTagContainer OwnedGameplayTags;
