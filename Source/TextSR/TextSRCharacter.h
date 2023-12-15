@@ -4,15 +4,20 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "GameplayTagContainer.h"
+#include "GameplayTagAssetInterface.h"
 #include "TextSRCharacter.generated.h"
 
 UCLASS(Blueprintable)
-class ATextSRCharacter : public ACharacter
+class ATextSRCharacter : public ACharacter, public IGameplayTagAssetInterface
 {
 	GENERATED_BODY()
 
 public:
 	ATextSRCharacter();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gameplay Tags")
+	FGameplayTagContainer OwnedGameplayTags;
 
 	// Called every frame.
 	virtual void Tick(float DeltaSeconds) override;
@@ -21,6 +26,8 @@ public:
 	FORCEINLINE class UCameraComponent* GetTopDownCameraComponent() const { return TopDownCameraComponent; }
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
+
+	virtual void GetOwnedGameplayTags(FGameplayTagContainer& TagContainer) const override { TagContainer = OwnedGameplayTags; return; }
 
 private:
 	/** Top down camera */
